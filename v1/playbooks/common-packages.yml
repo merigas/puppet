@@ -1,0 +1,10 @@
+---
+- hosts: all
+  tasks: 
+   - name: Install common software packages
+     yum: name={{item}} state=installed
+     with_items:
+       - git
+       - subversion
+       - gcc 
+       - vsftpd 

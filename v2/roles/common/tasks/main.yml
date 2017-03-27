@@ -1,0 +1,12 @@
+- name: Install following packages
+  yum: pkg={{item}} state=installed
+  with_items:
+    - telnet
+    - zip
+  when: ansible_distribution == 'RedHat'
+- name: Install following packages
+  apt: pkg={{item}} state=installed
+  with_items:
+    - telnet
+    - zip
+  when: ansible_distribution == 'Ubuntu'

@@ -1,0 +1,20 @@
+- name: Set web server type
+  set_fact: 
+    pack_name=httpd
+    serv_name=httpd
+  when: ansible_distribution == "RedHat"
+- name: Set web server type
+  set_fact: 
+    pack_name=apache2
+    serv_name=apache2
+  when: ansible_distribution == "Ubuntu"
+
+- name: Install Web Server
+  yum: pkg={{pack_name}} state=installed
+  when: ansible_distribution == "RedHat"
+- name: Install Web Server 
+  apt: pkg={{pack_name}} state=installed
+  when: ansible_distribution == "Ubuntu"
+
+- name: Start Web Server
+  service: name={{serv_name}} state=started

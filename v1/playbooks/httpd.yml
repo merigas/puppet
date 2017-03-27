@@ -1,0 +1,18 @@
+---
+- hosts: webserver
+  tasks:
+   - name: Install httpd redhat 
+     yum: name=httpd state=installed
+     when: ansible_distribution == "RedHat"
+   - name: Install httpd ubuntu
+     apt: name=apache2 state=installed
+     when: ansible_distribution == "Ubuntu"
+
+   - name: Start httpd
+     service: name=httpd state=started
+     when: ansible_distribution == "RedHat"
+
+   - name: Start apache2
+     service: name=apache2 state=started
+     when: ansible_distribution == "Ubuntu"
+...

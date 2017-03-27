@@ -1,0 +1,17 @@
+---
+- hosts: webserver
+  tasks:
+   - name: Install httpd redhat 
+     yum: name=httpd state=installed
+     notify:
+       - start httpd
+       - restart httpd
+     
+
+  handlers:
+   - name: start httpd
+     service: name=httpd state=started
+   - name: restart httpd
+     service: name=httpd state=restarted
+
+...

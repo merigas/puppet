@@ -1,0 +1,10 @@
+---
+- hosts: webserver
+  user: ec2-user
+  become: true 
+  tasks:
+    - name: Install Httpd
+      yum: name=httpd state=latest
+    - name: Start httpd
+      service: name=httpd state=started
+...

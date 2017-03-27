@@ -1,0 +1,17 @@
+---
+- hosts: webserver
+  user: root
+  vars:
+    pack_name: httpd
+    serv_name: httpd
+  tasks:
+    - name: Install {{pack_name}}
+      yum: pkg={{pack_name}} state=latest
+      notify: Restart HTTPD
+    - name: copy config file
+      copy: src=/root/ansible/files/httpd.conf dest=/etc/httpd/conf/httpd.conf owner=apache group=apache mode=0644
+      notify: Restart HTTPD
+      
+  handlers:
+    - name: Restart HTTPD
+      action: service name={{serv_name}} state=restarted

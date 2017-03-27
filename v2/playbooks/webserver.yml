@@ -1,0 +1,11 @@
+---
+- hosts: webserver
+  user: root
+  roles:
+#    - webserver
+#    - web-with-multios
+#    - web-with-multios-vars
+#    - web-with-multios-vars-files
+    - webserver-handler
+#  - { role: webserver-redhat, when: "ansible_distribution == 'RedHat'" }
+#  - { role: webserver-debian, when: "ansible_distribution == 'Debian'" }

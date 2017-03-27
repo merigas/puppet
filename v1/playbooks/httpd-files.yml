@@ -1,0 +1,19 @@
+---
+- hosts: sales 
+  tasks:
+   - name: Install httpd redhat 
+     yum: name=httpd state=installed
+     notify:
+       - start httpd
+   - copy: src=/root/ansible/files/httpd.conf dest=/etc/httpd/conf/httpd.conf owner=apache group=apache mode=0644
+     notify:
+       - restart httpd
+     
+
+  handlers:
+   - name: start httpd
+     service: name=httpd state=started
+   - name: restart httpd
+     service: name=httpd state=restarted
+
+...

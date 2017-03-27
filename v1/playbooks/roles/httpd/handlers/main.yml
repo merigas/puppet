@@ -1,0 +1,5 @@
+---
+# handlers file for httpd
+
+ - name: start {{package_name}}
+   service: name=httpd state=started

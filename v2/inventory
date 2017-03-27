@@ -1,0 +1,10 @@
+[webserver]
+172.31.20.49
+172.31.31.126
+[dbserver]
+172.31.20.48
+[apserver]
+172.31.20.47
+[app_and_db:children]
+dbserver
+apserver

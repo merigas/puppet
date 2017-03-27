@@ -1,0 +1,3 @@
+- name: Install Web Server
+  yum: pkg={{pack_name}} state=installed
+  notify: Restart HTTPD

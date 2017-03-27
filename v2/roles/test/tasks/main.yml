@@ -1,0 +1,8 @@
+- name: Install {{pack_name}}
+  yum: pkg={{pack_name}} state=installed
+  notify: Restart HTTPD
+- name: Install telnet
+  yum: pkg=telnet state=installed
+- name: Copy httpd.conf
+  copy: src=httpd.conf dest=/etc/httpd/conf/httpd.conf owner=apache group=apache mode=0644
+  notify: Restart HTTPD

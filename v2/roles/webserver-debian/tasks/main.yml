@@ -1,0 +1,5 @@
+- name: Install Web Server 
+  apt: pkg={{pack_name}} state=installed
+
+- name: Start Web Server
+  service: name={{serv_name}} state=started

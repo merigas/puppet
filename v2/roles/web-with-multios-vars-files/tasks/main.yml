@@ -1,0 +1,11 @@
+- name: Load variables
+  include_vars: "{{ ansible_distribution }}.yml"
+- name: Install Web Server
+  yum: pkg={{pack_name}} state=installed
+  when: ansible_distribution == "RedHat"
+- name: Install Web Server 
+  apt: pkg={{pack_name}} state=installed
+  when: ansible_distribution == "Ubuntu"
+
+- name: Start Web Server
+  service: name={{serv_name}} state=started

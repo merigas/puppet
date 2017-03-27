@@ -1,0 +1,12 @@
+---
+- hosts: webserver
+  user: root
+  gather_facts: no
+  tasks: 
+    - name: Adding users
+      user: name={{item}} state=present
+      with_items:
+        - user1
+        - user2
+        - user3
+        - rama

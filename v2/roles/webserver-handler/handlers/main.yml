@@ -1,0 +1,3 @@
+---
+- name: Restart HTTPD
+  action: service name={{serv_name}} state=restarted

@@ -1,0 +1,10 @@
+---
+- hosts: webserver
+  user: root
+  vars_prompt: 
+    - name: pack_name
+      prompt: Enter web server package name
+      private: no
+  tasks:
+    - name: Install {{ pack_name }}
+      yum: pkg={{pack_name}} state=installed

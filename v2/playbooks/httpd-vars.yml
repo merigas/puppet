@@ -1,0 +1,12 @@
+---
+- hosts: webserver
+  vars:
+    pack_name: httpd
+    serv_name: httpd
+  user: root 
+  tasks:
+    - name: Install {{ pack_name }}
+      yum: name={{ pack_name }} state=latest
+    - name: Start {{ serv_name }}
+      service: name={{ serv_name }} state=started
+...

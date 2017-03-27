@@ -1,0 +1,16 @@
+---
+- hosts: webserver
+#  vars:
+#     package_name: httpd
+#     service_name: httpd
+  vars_prompt:
+     - name: "package_name"
+       prompt: "Enter the package to install : "
+  tasks:
+   - name: Install {{ package_name }} redhat 
+     yum: name={{ package_name }} state=installed
+     when: ansible_distribution == "RedHat"
+#   - name: Start {{ service_name }}
+#     service: name={{ service_name }} state=started
+#     when: ansible_distribution == "RedHat"
+...
